@@ -5,5 +5,5 @@ En este repositorio se encuentra el proyecto del sitio web con el framework Djan
 - para acceder a los formularios cada  seccion tiene su respectivo botón nuevo(estos aparecen en las vistas creadas para los modelos). Estos ultimos te redirigen a su respectivo formulario.
 - cree una base de datos.
 - cree un template nombrado "padre" que a traves de herencia html, hereda su estructura a los demas templates.
-Por ultimo cree un SuperUser
+- Por ultimo cree un SuperUser
 
