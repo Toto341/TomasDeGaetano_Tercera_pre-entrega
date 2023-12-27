@@ -1,0 +1,27 @@
+{% extends 'AppCoder/padre.html' %}
+{% load static %}
+
+{% block formulariocambiante %}
+
+    {% if frmClientes.errors %}
+
+        <p style="color: red">Estan mal los datos, revisar</p>
+
+    {% endif %}
+
+
+    <h5>Clientes</h5>
+
+    <form action="" method="POST">{% csrf_token %}
+
+        <table class="table table-bordered">
+
+            {{ frmClientes.as_table }}
+
+        </table>
+
+        <input type="submit" value="Enviar">
+
+    </form>
+
+{% endblock %}

@@ -3,8 +3,17 @@
 {% load static %}
 
 {% block contenidoQueCambia %}
-<!--Aquí va lo que cambia, y lo asociado a está vista :) -->
-<h1>Este es el título del Inicio que cambio</h1>
-<p>Se ha heredado todo desde la plantilla padre</p>
-<h3>En el hijo, inicio.html, casí no hay nada :)</h3>
+Hola
+{% endblock %}
+
+
+{% block formulariocambiante %}
+
+    <div class="row">
+        <div class="col-sm-12 d-flex justify-content-around">
+            <span>Clientes</span>
+            <a class="btn btn-primary" href="{% url 'clientesFormulario' %}">NUEVO</a>
+        </div>
+    </div>
+
 {% endblock %}

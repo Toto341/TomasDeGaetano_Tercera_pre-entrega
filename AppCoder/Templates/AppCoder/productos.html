@@ -10,3 +10,16 @@
 <h3>En el hijo, inicio.html, casí no hay nada :)</h3>
 
 {% endblock %}
+
+
+
+{% block formulariocambiante %}
+
+    <div class="row">
+        <div class="col-sm-12 d-flex justify-content-around">
+            <span>Productos</span>
+            <a class="btn btn-primary" href="{% url 'productosFormulario' %}">NUEVO</a>
+        </div>
+    </div>
+
+{% endblock %}

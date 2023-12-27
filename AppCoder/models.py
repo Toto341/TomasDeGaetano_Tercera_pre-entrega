@@ -11,7 +11,7 @@ class Clientes(models.Model):
 class Productos(models.Model):
     nombre = models.CharField(max_length=60)
     categoria = models.CharField(max_length=40)
-    precio = models.DecimalField(max_digits=6,decimal_places=6)
+    precio = models.DecimalField(max_digits=6,decimal_places=2)
     Stock = models.IntegerField()
 
 class Marcas(models.Model):
