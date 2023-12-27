@@ -7,20 +7,17 @@
 <section class="py-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="row gx-4 gx-lg-5 align-items-center">
-            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{% static 'AppCoder/assets//pngtree-sporta-lot-of-balls-and-stuff-glove-puck-soccer-photo-image_16837276.jpg' %}" alt="..." /></div>
+            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{% static 'AppCoder/assets/1366_2000.png' %}" alt="..." /></div>
             <div class="col-md-6">
                 <div class="small mb-1">SKU: BST-498</div>
-                <h1 class="display-5 fw-bolder">Shop item template</h1>
+                <h1 class="display-5 fw-bolder">Catalogo de Marcas</h1>
                 <div class="fs-5 mb-5">
-                    <span class="text-decoration-line-through">$45.00</span>
-                    <span>$40.00</span>
+                    <span class="text-decoration-line-through"></span>
+                    <span></span>
                 </div>
-                <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
+                <p class="lead">nos complace presentarte una selección cuidadosamente curada de las marcas más destacadas y apreciadas en el mercado. Estamos emocionados de ofrecerte una experiencia de compra única, donde la calidad y la variedad se encuentran en un solo lugar.</p>
                 <div class="d-flex">
-                    <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                    <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                        <i class="bi-cart-fill me-1"></i>
-                        Add to cart
+                   
                     </button>
                 </div>
             </div>
@@ -35,11 +32,38 @@
 
 {% block formulariocambiante %}
 
-    <div class="row">
-        <div class="col-sm-12 d-flex justify-content-around">
-            <span>Marcas</span>
-            <a class="btn btn-primary" href="{% url 'marcasFormulario' %}">NUEVO</a>
-        </div>
-    </div>
+<table class="table table-bordered">
+
+    <tr>
+        <td><b>Marcas</b></td>
+        <td class="d-flex justify-content-end">
+            <a class="btn btn-primary btn-sm" href="{% url 'marcasFormulario' %}">NUEVO</a>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Id</td>
+        <td>Nombre</td>
+    </tr>
+
+{% if marcas %}
+
+    {% for marca in marcas %}            
+
+        <tr>
+            <td>{{ marca.id }}</td>
+            <td>{{ marca.nombre }}</td>
+        </tr>
+
+
+    {% endfor %}
+
+{% endif %}
+
+</table>
 
 {% endblock %}
+
+
+
+

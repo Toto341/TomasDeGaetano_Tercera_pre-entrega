@@ -1,0 +1,35 @@
+{% extends 'AppCoder/padre.html' %}
+{% load static %}
+
+{% block formulariocambiante %}
+
+        <table class="table table-bordered">
+
+                <tr>
+                    <td colspan="3">Productos</td>
+                </tr>
+
+                <tr>
+                    <td>Nombre</td>
+                    <td>Precio</td>
+                    <td>Stock</td>
+                </tr>
+
+            {% if productos %}
+
+                {% for producto in productos %}            
+
+                    <tr>
+                        <td>{{ producto.nombre }}</td>
+                        <td>{{ producto.precio }}</td>
+                        <td>{{ producto.stock }}</td>
+                    </tr>
+
+
+                {% endfor %}
+
+            {% endif %}
+
+        </table>
+
+{% endblock %}

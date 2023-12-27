@@ -6,13 +6,20 @@ def inicio(request):
     return render(request,'AppCoder/inicio.html')
 
 def clientes(request):
-    return render(request, 'AppCoder/clientes.html')
+     
+     clientes = Clientes.objects.all()
+
+     return render(request, 'AppCoder/clientes.html', {"clientes":clientes})
 
 def productos(request):
-    return render(request,'AppCoder/productos.html')
+     
+     productos = Productos.objects.all()
+     return render(request,'AppCoder/productos.html', {"productos":productos})
 
 def marcas(request):
-    return render(request,'AppCoder/marcas.html')
+
+    marcas = Marcas.objects.all()
+    return render(request,'AppCoder/marcas.html',{"marcas":marcas})
 
 
 def clientesFormulario(request):       
@@ -65,7 +72,7 @@ def productosFormulario(request):
             productos = Productos(nombre = nombre,
                                   categoria = categoria,
                                   precio = precio,
-                                  stock = stock)
+                                  stock = stock,)
             productos.save()
 
             return render(request, "AppCoder/inicio.html")      
@@ -97,3 +104,23 @@ def marcasFormulario(request):
         frmMarcas = MarcasFormulario()
     
     return render(request, "AppCoder/marcasFormulario.html", {"frmMarcas":frmMarcas})
+
+def formBuscarProducto(request):
+
+    return render(request, 'AppCoder/busquedaProducto.html')
+
+
+def buscarProducto(request):
+
+    if request.method == "GET":
+
+        nombre = request.GET.get("producto")
+       
+        if nombre is None:
+            
+            return HttpResponse("Debe completar el campo producto")
+        
+        else:
+
+            productos = Productos.objects.filter(nombre__icontains=nombre)
+            return render(request, "AppCoder/resultadosBuscarProductos.html", {"productos":productos})
