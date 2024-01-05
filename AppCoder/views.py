@@ -124,3 +124,18 @@ def buscarProducto(request):
 
             productos = Productos.objects.filter(nombre__icontains=nombre)
             return render(request, "AppCoder/resultadosBuscarProductos.html", {"productos":productos})
+        
+
+def eliminar_producto(request,id_producto):
+
+    producto = Productos.objects.get(id=id_producto)
+
+    producto.delete()
+
+    #Vuelve al menu
+
+    productos = Productos.objects.all() #Trae todos los productos
+
+    return render(request, "AppCoder/productos.html", {"productos":productos}) # renderiza el template productos.html y le pasa el contexto 
+
+    

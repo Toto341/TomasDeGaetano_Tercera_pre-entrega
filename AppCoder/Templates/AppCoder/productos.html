@@ -57,6 +57,9 @@
             <td>{{ producto.nombre }}</td>
             <td>{{ producto.precio }}</td>
             <td>{{ producto.stock }}</td>
+            <td>
+                <a class="btn btn-primary btn-sm" href="{% url 'eliminar_producto' producto.id %}">Eliminar</a>
+            </td>
         </tr>
 
 

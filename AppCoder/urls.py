@@ -13,5 +13,6 @@ urlpatterns = [
 
     path('busquedaProducto', views.formBuscarProducto, name="busquedaProducto"),
     path('buscar', views.buscarProducto, name="buscarProducto"),
-
+    
+    path('eliminarproducto/<id_producto>', views.eliminar_producto, name="eliminar_producto")
 ]
