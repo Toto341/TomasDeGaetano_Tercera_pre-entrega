@@ -53,6 +53,9 @@
         <tr>
             <td>{{ marca.id }}</td>
             <td>{{ marca.nombre }}</td>
+            <td>
+                <a class="btn btn-primary btn-sm" href="{% url 'eliminar_marca' marca.id %}">Eliminar</a>
+            </td>
         </tr>
 
 

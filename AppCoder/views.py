@@ -139,3 +139,13 @@ def eliminar_producto(request,id_producto):
     return render(request, "AppCoder/productos.html", {"productos":productos}) # renderiza el template productos.html y le pasa el contexto 
 
     
+def eliminar_marca(request,id_marca):
+
+    marca = Marcas.objects.get(id=id_marca)
+
+    marca.delete()
+
+
+    marcas = Marcas.objects.get()
+
+    return render(request, "AppCoder/marcas.html", {"marcas":marcas})
