@@ -2,11 +2,18 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from AppCoder.forms import MarcasFormulario, ProductosFormulario,ClientesFormulario
 from AppCoder.models import Marcas,Productos,Clientes
+
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout,authenticate
+from django.contrib.auth.decorators import login_required
+
+
+
+
 def inicio(request):
     return render(request,'AppCoder/inicio.html')
 
+@login_required
 def clientes(request):
      
      clientes = Clientes.objects.all()

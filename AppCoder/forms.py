@@ -1,5 +1,5 @@
 from django import forms
-
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 class MarcasFormulario(forms.Form):
 
     nombre = forms.CharField(max_length=30)
@@ -19,4 +19,3 @@ class ClientesFormulario(forms.Form):
     email = forms.EmailField()
 
 
-   
