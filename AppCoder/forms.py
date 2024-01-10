@@ -17,4 +17,6 @@ class ClientesFormulario(forms.Form):
     apellido = forms.CharField(max_length=30)
     dni = forms.IntegerField()
     email = forms.EmailField()
-    
+
+
+   

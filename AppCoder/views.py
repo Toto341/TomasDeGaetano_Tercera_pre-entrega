@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from AppCoder.forms import MarcasFormulario, ProductosFormulario,ClientesFormulario
 from AppCoder.models import Marcas,Productos,Clientes
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, logout,authenticate
 def inicio(request):
     return render(request,'AppCoder/inicio.html')
 
@@ -148,4 +150,55 @@ def eliminar_marca(request,id_marca):
 
     marcas = Marcas.objects.get()
 
+
     return render(request, "AppCoder/marcas.html", {"marcas":marcas})
+
+
+def login_request(request):
+
+    if request.method == "POST":
+
+        form = AuthenticationForm(request, data=request.POST)
+
+        if form.is_valid():
+            username = form.cleaned_data.get("username")
+            password = form.cleaned_data.get("password")
+
+            user = authenticate(username=username, password=password)
+
+            if user is not None:
+                login(request, user)
+
+                return render(request, 'AppCoder/inicio.html', {"mensaje": f"Bienvenido {user}"})
+                  
+            else:
+                return render(request, 'AppCoder/inicio.html', {"mensaje": f"Usuario o contraseña invalidos"})
+
+        else:
+
+            return render(request, 'AppCoder/inicio.html', {"mensaje": f"Datos form incorrectos"})           
+
+
+    form = AuthenticationForm()   
+        
+    return render(request, "AppCoder/login.html", {"form":form})    
+
+def registrar(request):
+
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+
+        if form.is_valid():
+
+          username = form.cleaned_data.get("username")
+
+          form.save()
+    
+          return render(request, "AppCoder/inicio.html", {"mensaje":f"Se dio de alta el usuario {username}"})
+    else:
+
+        form = UserCreationForm()
+
+
+    return render(request, "AppCoder/registro.html", {"form":form})
+

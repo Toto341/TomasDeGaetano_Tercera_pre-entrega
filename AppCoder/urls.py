@@ -15,5 +15,7 @@ urlpatterns = [
     path('buscar', views.buscarProducto, name="buscarProducto"),
     
     path('eliminarproducto/<id_producto>', views.eliminar_producto, name="eliminar_producto"),
-    path('eliminarmarca/<id_marca>', views.eliminar_marca, name="eliminar_marca")
+    path('eliminarmarca/<id_marca>', views.eliminar_marca, name="eliminar_marca"),
+    path('login', views.login_request, name="login"),
+    path("registrar", views.registrar, name = "registrar"),
 ]
