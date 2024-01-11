@@ -20,4 +20,5 @@ urlpatterns = [
     path('login', views.login_request, name="login"),
     path("registrar", views.registrar, name = "registrar"),
     path("logout",LogoutView.as_view(template_name="AppCoder/logout.html"), name='logout'),
+    path('editar_perfil', views.editar_perfil, name= "editar_perfil" )
 ]

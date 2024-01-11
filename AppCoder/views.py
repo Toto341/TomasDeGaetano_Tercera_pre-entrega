@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from AppCoder.forms import MarcasFormulario, ProductosFormulario,ClientesFormulario
+from AppCoder.forms import (MarcasFormulario, ProductosFormulario,ClientesFormulario, UserRegistrationForm,UserEditForm,) 
 from AppCoder.models import Marcas,Productos,Clientes
 
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
@@ -193,7 +193,7 @@ def login_request(request):
 def registrar(request):
 
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
+        form = UserRegistrationForm(request.POST)
 
         if form.is_valid():
 
@@ -204,8 +204,30 @@ def registrar(request):
           return render(request, "AppCoder/inicio.html", {"mensaje":f"Se dio de alta el usuario {username}"})
     else:
 
-        form = UserCreationForm()
+        form = UserRegistrationForm()
 
 
     return render(request, "AppCoder/registro.html", {"form":form})
+
+def editar_perfil(request):
+    usuario = request.user
+    if request.method == "POST":
+        formulario = UserCreationForm(request.POST)
+
+        if formulario.is_valid():
+
+            informacion = formulario.cleaned_data
+
+            usuario.email = informacion.get("email")
+            usuario.password1 = informacion.get("password1")
+            usuario.password2 = informacion.get("password2")
+            usuario.last_name = informacion.get("last_name")
+            usuario.first_name = informacion.get ("first_name")
+
+            usuario.save()
+            return render(request, "AppCoder/inicio.html" )
+
+    formulario = UserEditForm(initial={"email": usuario.email })
+
+    return render(request, "AppCoder/editar_usuario.html", {"formulario":formulario})
 
